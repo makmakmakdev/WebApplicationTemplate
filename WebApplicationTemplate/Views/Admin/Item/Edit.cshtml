@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Active"] = "Item";
+}
+@model ItemModel
+
+<div class="row">
+    <div class="col-12">
+        <form method="post" asp-action="Store">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <div class="d-flex align-items-center">
+                                Edit Item Code
+                                <a class="btn btn-primary ml-auto" asp-action="Index">View List</a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="w-25 text-right">
+                            Item Code <span class="text-danger">*</span>
+                        </td>
+                        <td class="w-75">
+                            <input readonly autofocus autocomplete="off" required type="text" value="@Model.ItemCode" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            Item Name
+                        </td>
+                        <td>
+                            <input autofocus autocomplete="off" required type="text" value="@Model.ItemName" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            Item Description
+                        </td>
+                        <td>
+                            <input autofocus autocomplete="off" required type="text" value="@Model.ItemDescription" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <button type="reset" class="btn btn-outline-secondary px-5">Clear</button>
+                            <button type="submit" class="btn btn-primary px-5">Save</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

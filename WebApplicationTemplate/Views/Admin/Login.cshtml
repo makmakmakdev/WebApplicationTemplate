@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="card w-100 px-4" style="max-width:500px;">
+    <div class="card-body">
+        <form method="post" asp-controller="Admin" asp-action="Login">
+            <div class="form-group my-5">
+                <h3 class="text-center font-weight-normal mb-3">Label Master - Admin</h3>
+                <p class="text-center">Use your <span style="border-bottom: solid 1px;padding-bottom:5px;">Domain Account</span> to login</p>
+            </div>
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input required autofocus autocomplete="off" id="Username" name="Username" placeholder="" type="text" class="form-control form-control-lg">
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input required id="Password" name="Password" type="password" class="form-control form-control-lg">
+                <label style="user-select: none;"><input tabindex="-1" id="ShowPassword" type="checkbox" class="mr-2 mt-3" />Show Password</label>
+            </div>
+            <div class="form-group mt-5 d-flex flex-column">
+                <button type="submit" class="btn btn-primary btn-lg px-5">Login</button>
+                <p class="mt-4 text-center text-danger"></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            clearAllInput()
+        })
+
+        $('#ShowPassword').on('change', function () {
+            showPassword($('#ShowPassword').is(':checked'))
+        })
+
+        $(document).on('submit', function(e) {
+            $('button[type="submit"]')
+                .html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
+                .prop('disabled', true)
+        })
+
+        function clearAllInput() {
+            $('input[type="checkbox"]').prop('checked', false)
+        }
+
+        function showPassword(isChecked) {
+            $('#Password').prop('type', isChecked ? 'text' : 'password')
+        }
+    </script>
+}

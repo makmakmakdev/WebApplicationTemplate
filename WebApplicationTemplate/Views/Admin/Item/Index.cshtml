@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Active"] = "Item";
+}
+@model IEnumerable<ItemModel>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="999">
+                        <div class="d-flex align-items-center">
+                            Item Code List
+                            <a class="btn btn-primary ml-auto" asp-action="Create">Enroll New Item Code</a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>Item Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><a asp-action="Edit" asp-route-itemCode="@item.ItemCode">@item.ItemCode</a></td>
+                        <td>@item.ItemName</td>
+                        <td>@item.ItemDescription</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
